@@ -1,0 +1,42 @@
+<!-- <h1 class="header">Tasks</h1>
+    <div class="add-task-box">
+        <input type="text" ng-model="newTask.title" placeholder="Task name">
+        <select ng-model="newTask.priority">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select>
+        <input type="date" ng-model="newTask.dueDate">
+        <button type="button" ng-click="addTask()">Add</button>
+    </div>
+    <div class="task-box" ng-repeat="task in tasks">
+        <h2>{{task.title}}</h2>
+        <p>Priority: {{task.priority}}</p>
+        <p>Due Date: {{task.dueDate | date:'MM/dd/yyyy'}}</p>
+    </div> -->
+
+    <div>
+        <h2>Task List</h2>
+        <ng-container *ngIf="todos.length > 0; else noTasks">
+          <ul class="task-list">
+            <li *ngFor="let todo of todos">
+              <div class="task-item">
+                <div class="task-header">
+                  <strong class="task-description">Description: {{ todo.description }}</strong>
+                  <strong class="task-due">Due: {{ todo.due | date: 'shortDate' }}</strong>
+                </div>
+                <div class="task-priority">
+                  <strong>Priority:</strong> {{ todo.priority }}
+                </div>
+              </div>
+            </li>
+          </ul>
+        </ng-container>
+        <ng-template #noTasks>
+            <div class="no-tasks">
+              <p>No tasks added yet.</p>
+            </div>
+          </ng-template>
+      </div>
+      
+      

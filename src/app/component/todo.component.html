@@ -1,0 +1,41 @@
+<h2>ToDo</h2>
+
+<form [formGroup]="form">
+  <div class="input-wrapper">
+    <label for="description">Description:</label>
+    <input type="text" id="description" formControlName="description">
+    <div *ngIf="isControlInvalid('description')" class="error-message">
+      Describe your activity (min.5 chars)
+    </div>
+  </div>
+
+  <div class="input-wrapper">
+    <div class="priority-wrapper">
+        <label>Priority:</label>
+      <div class="priority">
+        <input type="radio" id="low" name="priority" value="Low" formControlName="priority">
+        <label for="low">Low</label>
+      </div>
+      <div class="priority">
+        <input type="radio" id="medium" name="priority" value="Medium" formControlName="priority">
+        <label for="medium">Medium</label>
+      </div>
+      <div class="priority">
+        <input type="radio" id="high" name="priority" value="High" formControlName="priority">
+        <label for="high">High</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="input-wrapper">
+    <label for="due">Due:</label>
+    <input type="date" id="due" formControlName="due">
+    <div *ngIf="isControlInvalid('due')" class="error-message">
+      Date cannot be earlier than current date
+    </div>
+  </div>
+
+  <button type="button" (click)="addTodo()" [disabled]="!form.valid">Add</button>
+  <!-- <button type="button" (click)="addTodo()" [disabled]="shouldDisableButton()">Add</button> -->
+
+</form>

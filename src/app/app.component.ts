@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Todo } from './models';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'workshop32_2';
+
+  newTodo: Todo | null = null;
+
+  onTodoAdded(todo: Todo) {
+    this.newTodo = todo;
+  }
 }
